@@ -1,41 +1,22 @@
 // Entry point for the build script in your package.json
-//import '@hotwired/turbo-rails';
-import './controllers';
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
-import React from 'react';
-import ReactDOM from 'react-dom';
+import "@hotwired/turbo-rails"
+import "./controllers"
 
-import Greeting from './React/src/component/Greetings';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import App from './app';
+import { BrowserRouter } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <nav className="navbar">
-        <NavLink
-          className={({ isActive }) => (isActive ? 'active-link' : 'default-link')}
-          to="/greetings"
-        >
-          Greetings
-        </NavLink>
-      </nav>
-      <Routes>
-        <Route
-          path="greetings"
-          element={<Greeting />}
-        />
-      </Routes>
-      <p>test</p>
-    </div>
-  );
-}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
+  
+    <BrowserRouter>
     <Provider store={store}>
       <App />
     </Provider>
-  </BrowserRouter>,
+    </BrowserRouter>
+  
 );
